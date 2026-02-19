@@ -1,5 +1,6 @@
 from LL import LList
 from Med.LRU import LRUCache
+from Tree import Tree, Node
 
 def testLinkedList():
     hello = LList()
@@ -23,4 +24,16 @@ def testLRU():
     print(lRUCache.get(3))    # return 3
     print(lRUCache.get(4))    # return 4
 
+def testTree():
+    #simple tree
+    simp = Tree()
+    simp.root.data = 5
 
+    arr = [3,7,1,4,6,8,0]
+
+    for num in arr:
+        Node(num).insert(simp.root)
+
+    print(simp)
+
+testTree()
