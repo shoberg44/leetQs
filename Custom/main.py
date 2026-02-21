@@ -1,6 +1,6 @@
 from LL import LList
 from Med.LRU import LRUCache
-from Tree import Tree, Node
+from Tree import Tree, Node, AVLTree, RBTree
 
 def testLinkedList():
     hello = LList()
@@ -26,14 +26,23 @@ def testLRU():
 
 def testTree():
     #simple tree
-    simp = Tree()
-    simp.root.data = 5
+    #     5
+    #   3   7
+    #  1 4 6 8
+    # 0
+    tree = AVLTree([5, 3, 7, 1, 4, 6, 8, 0])
+    print(tree,end="\n---------------------\n")
+    print(tree._balance(tree.root),'\n',"-------\n")
 
-    arr = [3,7,1,4,6,8,0]
+    # 1
+    #   2
+    #    3
+    #     ...8
+    tree2 = AVLTree([2, 3, 4, 5, 6, 7, 8])
+    print(tree2, end="\n---------------------\n")
+    print(tree2._balance(tree2.root), '\n', "-------\n")
 
-    for num in arr:
-        Node(num).insert(simp.root)
 
-    print(simp)
+
 
 testTree()

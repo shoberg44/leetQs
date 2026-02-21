@@ -69,6 +69,15 @@ class Tree:
 class RBTree (Tree):
     pass
 class AVLTree(Tree):
+    def __init__(self):
+        # simple tree
+        tree = AVLTree()
+    def __init__(self, nodes_list):
+        nodes_list.reverse()
+        self.root = Node(nodes_list.pop(len(nodes_list)-1))
+        while nodes_list:
+            num = nodes_list.pop(len(nodes_list)-1)
+            Node(num).insert(self.root)
 
     '''
     Right Rotates
@@ -84,4 +93,52 @@ class AVLTree(Tree):
     Balances a subtree
     '''
     def _balance(self, node):
-        pass
+        # need to find the height of the l & r subtrees
+        left_h = 0
+        if node.left:
+            left_h = self._height(node.left)
+        right_h = 0
+        if node.right:
+            right_h = self._height(node.right)
+
+        balance = left_h - right_h
+        if  balance > 1:
+            pass
+
+        if balance < -1:
+            self._Lrot(node)
+        elif balance > 1:
+            self._Rrot(node)
+
+        return balance
+
+
+
+
+    def _height(self, node):
+        if node is None:
+            return -1
+
+
+        left_height = 0
+        if node.left:
+            left_height = self._height(node.left)
+        else:
+            left_height = -1 # BOTTOMED OUT LEFT TREE
+
+        right_height = 0
+        if node.right:
+            right_height = self._height(node.right)
+        else:
+            right_height = -1
+
+        if left_height == -1 and right_height == -1:
+            return 0 # base case (no children start counting up)
+
+        if left_height < right_height:
+            return right_height + 1
+        return left_height + 1
+
+
+
+
