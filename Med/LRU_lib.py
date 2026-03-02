@@ -7,7 +7,7 @@ class LRUCache(object):
         :type capacity: int
         """
         self._capacity = capacity
-        self._stack = dict()
+        self._stack = collections.OrderedDict()
         
 
     def get(self, key):
