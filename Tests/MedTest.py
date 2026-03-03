@@ -63,11 +63,8 @@ class TestLL(unittest.TestCase):
             l.pop()
         except IndexError as e:
             print(e)
-            print(e.__notes__)
         except:
             print("something went wrong:",l)
-        finally:
-            print('done handling error')
 
 
 class TestTree(unittest.TestCase):

@@ -30,7 +30,14 @@ class DoubleLinkedList:
     def pop(self, front=False):
         # if empty
         if not self._head or not self._tail:
-            raise IndexError('popping from empty or malformed list').add_note(f'H/T: {self._head} / {self._tail}')
+            # Create the exception
+            err = IndexError('popping from empty or malformed list')
+
+            # Add the note (modifies 'err' in place)
+            err.add_note(f'H/T: {self._head} / {self._tail}')
+
+            # Raise the modified exception
+            raise err
 
         # reassign tail to tails prev
         target = self._tail
