@@ -8,7 +8,16 @@ class LRUCache(object):
         """
         self._capacity = capacity
         self._stack = collections.OrderedDict()
-        
+
+    def __len__(self):
+        return len(self._stack)
+
+    def __getitem__(self, item):
+        return self._stack[item]
+    def __setitem__(self, key, value):
+        self._stack[key] = value
+    def __delitem__(self, key):
+        del self._stack[key]
 
     def get(self, key):
         """

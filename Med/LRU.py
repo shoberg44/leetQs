@@ -1,5 +1,3 @@
-import collections
-
 class LRUCache(object):
 
     def __init__(self, capacity):
@@ -8,6 +6,10 @@ class LRUCache(object):
         """
         self._capacity = capacity
         self._stack = dict()
+        self._size = 0
+
+    def __len__(self):
+        return self._size
         
 
     def get(self, key):
@@ -34,7 +36,7 @@ class LRUCache(object):
             self._stack[key] = value
         else:
             self._stack.move_to_end(key)
-
+        self._size += 1
         
 
 
