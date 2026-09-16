@@ -29,11 +29,12 @@ def find_test_pairs(directory: Path):
         # Generate possible output file names by replacing 'input' with 'output'
         # e.g. 001-input.txt -> 001-output.txt
         output_name = re.sub(r"input", "output", in_file.name, flags=re.IGNORECASE)
+        base_output_name = re.sub(r'\.(txt|text|py)$', '', output_name, flags=re.IGNORECASE)
         out_candidates = [
             directory / output_name,
-            directory / f"{re.sub(r'\.(txt|text|py)$', '', output_name, flags=re.IGNORECASE)}.txt",
-            directory / f"{re.sub(r'\.(txt|text|py)$', '', output_name, flags=re.IGNORECASE)}.text",
-            directory / f"{re.sub(r'\.(txt|text|py)$', '', output_name, flags=re.IGNORECASE)}.py",
+            directory / f"{base_output_name}.txt",
+            directory / f"{base_output_name}.text",
+            directory / f"{base_output_name}.py",
         ]
 
         # Use the first existing candidate
