@@ -14,7 +14,6 @@ def find_amount(rubie_value, saph_value, backpack_space):
         combinations.append(str(base + slot * step_diff))
     ret.append(" ".join(combinations))
 
-
 # given template
 num_tests = int(input())
 for test_idx in range(num_tests):
